@@ -17,9 +17,14 @@ with open(opt.jsonl_file, 'r') as ff:
 
 for json_str in json_list:
     data = json.loads(json_str)
+
+    if 'title' not in data.keys():
+        title.append('Hello, world\n')
+    else:
+        title.append(data['title'])
+
     ids.append(data['id'])
     maintext.append(data['maintext'])
-    title.append(data['title'])
 
 data = {}
 data['id'] = ids
